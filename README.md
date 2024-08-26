@@ -123,4 +123,32 @@ Here,
 
 ```
 
+## Providers
+
+### PostgreSQL Provider
+
+`Reference`: [Npgsql-docker-compose](https://dev.to/geoff89/how-to-deploy-postgresql-with-docker-and-docker-compose-3lj3)
+
+`package`: Npgsql.EntityFrameworkCore.PostgreSQL
+
+### Running Migrations when multiple contexts available.
+
+```sh
+
+## USING DOTNET CLI
+
+    dotnet ef migrations add InitialCreate --context PostgreSqlContext --output-dir Migrations/PostgresMigrations
+
+    dotnet ef database update --context PostgreSqlContext
+
+## USING PACKAGE MANAGER CONSOLE IN VISUAL STUDIO
+
+    Add-Migration InitialCreate -Context PostgreSqlContext -OutputDir Migrations/PostgresMigrations
+
+    Update-Database -Context PostgreSqlContext
+
+```
+
+
+
 

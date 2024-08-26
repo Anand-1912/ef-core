@@ -18,6 +18,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataContextLibrary", "src\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContossoConsole", "src\ContossoConsole\ContossoConsole.csproj", "{B74334D0-A2A6-4C19-BD79-D7CC647131BB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "containers", "containers", "{ED8AA00A-A083-4C04-8C48-CE39C478C76E}"
+	ProjectSection(SolutionItems) = preProject
+		containers\docker-compose-postgres.yaml = containers\docker-compose-postgres.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

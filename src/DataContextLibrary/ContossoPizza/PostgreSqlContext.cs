@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataContextLibrary.ContossoPizza;
 
-public class SqlServerContext: DbContext
+public class PostgreSqlContext : DbContext
 {
     public DbSet<Customer> Customers { get; set; } = null!;
     public DbSet<Order> Orders { get; set; } = null!;
@@ -11,6 +11,6 @@ public class SqlServerContext: DbContext
     public DbSet<OrderDetail> OrderDetails { get; set; } = null!;
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(@"Data Source=.;Initial Catalog=ContossoPizza;Integrated Security=True;");
+        optionsBuilder.UseNpgsql(@"Host=localhost;Port=5432;Database=postgres;Username=root;Password=secret;Pooling=false;Timeout=300;CommandTimeout=300;");
     }
 }

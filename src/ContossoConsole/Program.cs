@@ -4,20 +4,22 @@ using DataModelLibrary.ContossoPizza;
 
 Console.WriteLine("Contosso Pizza Shop!");
 
+#region - Sql Server
+
 using SqlServerContext sqlContossoContext = new();
 
 #region Insert
-//Product veggieSpecial = new()
-//{
-//    Name = "Veggie Special Pizza",
-//    Price = 9.99M
-//};
+Product veggieSpecial = new()
+{
+    Name = "Veggie Special Pizza",
+    Price = 9.99M
+};
 
-//Product deluxeMeat = new()
-//{
-//    Name = "Deluxe Meat Pizza",
-//    Price = 12.99M
-//};
+Product deluxeMeat = new()
+{
+    Name = "Deluxe Meat Pizza",
+    Price = 12.99M
+};
 
 //sqlContossoContext.Products.Add(veggieSpecial);
 //sqlContossoContext.Products.Add(deluxeMeat);
@@ -70,7 +72,6 @@ if(veggieSpecialPizza is Product)
 sqlContossoContext.SaveChanges();
 #endregion Update
 
-
 #region Delete
 
 //if (veggieSpecialPizza is Product)
@@ -79,3 +80,36 @@ sqlContossoContext.SaveChanges();
 //}
 //sqlContossoContext.SaveChanges();
 #endregion Delete
+
+
+#endregion
+
+#region - PostgreSql
+
+Console.WriteLine(new string('-', 20));
+Console.WriteLine("PstgreSql");
+Console.WriteLine(new string('-',20));
+
+using PostgreSqlContext postgreSqlContossoContext = new();
+
+#region Insert
+postgreSqlContossoContext.Add(veggieSpecial);
+postgreSqlContossoContext.Add(deluxeMeat);
+postgreSqlContossoContext.SaveChanges();
+#endregion Insert
+
+#region Read
+//Fluent Query
+var products_from_postgres = postgreSqlContossoContext.
+                             Products.
+                             Where(p => p.Price > 10.00M).
+                             OrderBy(p => p.Name);
+foreach (var product in products_from_postgres)
+{
+    Console.WriteLine($"Id: {product.Id}");
+    Console.WriteLine($"Name: {product.Name}");
+    Console.WriteLine($"Price: {product.Price}");
+    Console.WriteLine(new string('-', 20));
+}
+#endregion Read
+#endregion
